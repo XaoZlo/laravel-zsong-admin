@@ -15,6 +15,7 @@
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.6",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
@@ -60,12 +61,15 @@
         ],
         "post-install-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "@php artisan vendor:publish --provider=\"Encore\\Admin\\AdminServiceProvider\" --force",
+            "@php artisan vendor:publish --tag=laravel-admin-assets --force",
             "@php artisan optimize"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan vendor:publish --provider=\"Encore\\Admin\\AdminServiceProvider\" --force",
+            "@php artisan vendor:publish --tag=laravel-admin-assets --force",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:models -rqW",
             "@php artisan optimize"
         ]
     }
