@@ -58,11 +58,11 @@
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate --ansi",
+            "@php artisan storage:link",
             "@php artisan vendor:publish --tag=laravel-admin-assets --force"
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "@php artisan vendor:publish --tag=laravel-admin-assets --force",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:models -rqW",
